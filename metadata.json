@@ -1,0 +1,8 @@
+{
+  "name": "Remix 3D Cozy Snow Plow Game",
+  "description": "Um jogo 3D acolhedor de limpar neve em planetas esféricos com batalhas contra chefes, criado com Three.js e WebAudio procedural.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
