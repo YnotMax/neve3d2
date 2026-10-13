@@ -1,14 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>Cozy Plow · 雪かき惑星 — Jogo Acolhedor de Limpeza de Neve em 3D</title>
+  <title>Planeta Limpa-Neve 3D — Jogo Acolhedor de Limpeza de Neve</title>
   <meta name="description" content="Um jogo 3D acolhedor de limpar neve em planetas esféricos com batalhas contra chefes, criado com Three.js e WebAudio procedural." />
-  <meta property="og:title" content="Cozy Plow · 雪かき惑星 — Jogo Acolhedor de Limpeza de Neve em 3D" />
+  <meta property="og:title" content="Planeta Limpa-Neve 3D — Jogo Acolhedor de Limpeza de Neve" />
   <meta property="og:description" content="Um jogo 3D acolhedor de limpar neve em planetas esféricos com batalhas contra chefes, criado com Three.js e WebAudio procedural." />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Planeta Limpa-Neve 3D" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Planeta Limpa-Neve 3D — Jogo Acolhedor de Limpeza de Neve" />
+  <meta name="twitter:description" content="Um jogo 3D acolhedor de limpar neve em planetas esféricos com batalhas contra chefes, criado com Three.js e WebAudio procedural." />
+  <meta name="theme-color" content="#0b1325" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Planeta Limpa-Neve" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "Planeta Limpa-Neve 3D",
+    "description": "Um jogo 3D acolhedor de limpar neve em planetas esféricos com batalhas contra chefes, criado com Three.js e WebAudio procedural.",
+    "genre": ["Casual", "Simulation", "Action", "Arcade"],
+    "playMode": ["SinglePlayer", "MultiPlayer", "CoOp"],
+    "operatingSystem": "Web, Android, iOS, Windows, macOS, Linux",
+    "applicationCategory": "Game",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "BRL"
+    }
+  }
+  </script>
   <style>
 :root {
   --font-cozy: 'Helvetica Neue', Helvetica, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
@@ -2904,7 +2931,7 @@ body.is-touch-device .upgrade-key {
     <div class="select-top-stack">
       <div class="select-header-banner">
         <div class="select-kicker">Escolha seu Piloto Limpa-Neve · [← / →] ou Clique para Ver</div>
-        <div class="select-title">Cozy Plow</div>
+        <div class="select-title">Planeta Limpa-Neve</div>
       </div>
 
       <!-- Compact Room Code Bar Up Front in the Menu UI -->
@@ -3019,7 +3046,7 @@ body.is-touch-device .upgrade-key {
   <!-- TOP-LEFT: MINIMAL TITLE, BIOME SWITCHER & COLLAPSIBLE SNOWBALL STANDINGS -->
   <aside class="hud-zone-top-left gameplay-hud-zone" id="hud-zone-top-left">
     <div class="brand-bar">
-      <div class="brand-logo">Cozy Plow</div>
+      <div class="brand-logo">Planeta Limpa-Neve</div>
       <div class="planet-selector">
         <button class="planet-chip active" data-planet="0" type="button">Sakura</button>
         <button class="planet-chip" data-planet="1" type="button">Matcha</button>
@@ -3243,7 +3270,7 @@ body.is-touch-device .upgrade-key {
   <div class="run-summary-modal" id="run-summary-modal">
     <div class="run-summary-card">
       <button class="run-summary-close-x" id="summary-close-x-btn" type="button" title="Fechar [Esc]">✕</button>
-      <div class="run-summary-kicker" id="summary-kicker">Resumo da Partida · Cozy Plow</div>
+      <div class="run-summary-kicker" id="summary-kicker">Resumo da Partida · Planeta Limpa-Neve</div>
       <div class="run-summary-title" id="summary-title">Relatório do Estágio &amp; Bola de Neve</div>
       <div class="run-summary-grid">
         <div class="run-stat-box">
@@ -3326,6 +3353,24 @@ body.is-touch-device .upgrade-key {
 
       <div class="mp-section-label" id="mp-roster-heading">Jogadores na Sala (1 / 4)</div>
       <div class="mp-players-list" id="mp-room-players-list"></div>
+
+      <!-- OPÇÕES DE SERVIDOR MULTIPLAYER (NUVEM / VERCEL) -->
+      <div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.08);">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+          <span style="font-size:11px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.06em;">Configuração do Servidor Co-Op</span>
+          <button class="mp-btn" id="mp-toggle-server-btn" type="button" style="padding:2px 8px;font-size:10px;border-radius:6px;">Opções ⚙️</button>
+        </div>
+        <div id="mp-server-config-panel" style="display:none;padding:10px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);margin-bottom:6px;">
+          <div style="font-size:11px;color:var(--text-secondary);margin-bottom:8px;line-height:1.4;">
+            No Vercel (estático), o jogo roda 100% no modo <strong>Solo com Bots e Chefes</strong>. Para jogar co-op online com amigos pela internet, insira a URL do seu servidor WebSocket (ex: Render, Railway) ou deixe em branco para conexão local:
+          </div>
+          <div class="mp-input-row" style="margin-bottom:6px;">
+            <input class="mp-input" id="mp-custom-server-input" type="text" placeholder="Ex: wss://meu-servidor-ws.onrender.com" style="font-size:11px;" />
+            <button class="mp-btn primary" id="mp-save-server-btn" type="button" style="font-size:11px;white-space:nowrap;">Salvar &amp; Conectar</button>
+          </div>
+          <div style="font-size:10px;color:var(--warm-gold);opacity:0.9;">💡 Links de convite copiados incluem automaticamente seu servidor configurado!</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -3333,7 +3378,7 @@ body.is-touch-device .upgrade-key {
   <div class="controls-modal" id="controls-modal">
     <div class="controls-card">
       <button class="controls-close-x" id="controls-close-x-btn" type="button" title="Fechar [Esc]">✕</button>
-      <div style="font-size:10px;font-weight:400;letter-spacing:0.1em;color:var(--warm-gold);text-transform:uppercase;">Guia de Comandos · Cozy Plow</div>
+      <div style="font-size:10px;font-weight:400;letter-spacing:0.1em;color:var(--warm-gold);text-transform:uppercase;">Guia de Comandos · Planeta Limpa-Neve</div>
       <div style="font-size:17px;font-weight:300;color:var(--text-primary);">Como Jogar no Celular e no Computador</div>
 
       <div class="controls-grid">
@@ -12677,6 +12722,10 @@ function updateCharacterAnimationSystem(racer, idx, dt, rawDt, elapsed) {
     const mpJoinRoomBtnEl = document.getElementById('mp-join-room-btn');
     const mpRosterHeadingEl = document.getElementById('mp-roster-heading');
     const mpRoomPlayersListEl = document.getElementById('mp-room-players-list');
+    const mpToggleServerBtnEl = document.getElementById('mp-toggle-server-btn');
+    const mpServerConfigPanelEl = document.getElementById('mp-server-config-panel');
+    const mpCustomServerInputEl = document.getElementById('mp-custom-server-input');
+    const mpSaveServerBtnEl = document.getElementById('mp-save-server-btn');
 
     // Start Screen Multiplayer Elements
     const startConnStatusEl = document.getElementById('start-conn-status');
@@ -12759,14 +12808,18 @@ function updateCharacterAnimationSystem(racer, idx, dt, rawDt, elapsed) {
         startCurrentCodeEl.textContent = mpState.roomCode;
       }
       if (mpConnStatusEl) {
-        mpConnStatusEl.textContent = mpState.connected
-          ? `Co-Op Ao Vivo Conectado · ${pCount} Jogador${pCount > 1 ? 'es' : ''} Online`
-          : 'Reconectando ao Servidor Multijogador...';
+        if (mpState.connected) {
+          mpConnStatusEl.textContent = `Co-Op Ao Vivo Conectado · ${pCount} Jogador${pCount > 1 ? 'es' : ''} Online`;
+          mpConnStatusEl.style.color = '#7effd4';
+        } else {
+          mpConnStatusEl.textContent = 'Modo Solo & Bots Ativo (Servidor Co-Op Desconectado)';
+          mpConnStatusEl.style.color = 'var(--warm-gold)';
+        }
       }
       if (startConnStatusEl) {
         startConnStatusEl.textContent = mpState.connected
           ? `${pCount}/4J`
-          : 'Off-line';
+          : 'Solo/Bots';
       }
       const startLiveDotEl = document.getElementById('start-live-dot');
       if (startLiveDotEl) {
@@ -12893,21 +12946,65 @@ function updateCharacterAnimationSystem(racer, idx, dt, rawDt, elapsed) {
       updateMpTopPillAndRoster();
     }
 
-    function connectMultiplayerWebSocket() {
+    let wsReconnectAttempts = 0;
+    let wsReconnectTimer = null;
+
+    function getMultiplayerWebSocketUrl() {
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const qWs = urlParams.get('ws');
+        if (qWs && (qWs.startsWith('ws://') || qWs.startsWith('wss://'))) {
+          return qWs.trim();
+        }
+      } catch (_e) {}
+
+      try {
+        const stored = localStorage.getItem('cozy_plow_custom_ws');
+        if (stored && (stored.startsWith('ws://') || stored.startsWith('wss://'))) {
+          return stored.trim();
+        }
+      } catch (_e) {}
+
       const proto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-      const wsUrl = `${proto}//${window.location.host}`;
+      return `${proto}//${window.location.host}`;
+    }
+
+    function scheduleWsReconnect() {
+      if (wsReconnectTimer) return;
+      wsReconnectAttempts++;
+      const delay = Math.min(30000, Math.floor(3500 * Math.pow(1.5, Math.min(wsReconnectAttempts, 5))));
+      wsReconnectTimer = setTimeout(() => {
+        wsReconnectTimer = null;
+        connectMultiplayerWebSocket();
+      }, delay);
+    }
+
+    function connectMultiplayerWebSocket() {
+      if (wsReconnectTimer) {
+        clearTimeout(wsReconnectTimer);
+        wsReconnectTimer = null;
+      }
+      if (mpState.ws && (mpState.ws.readyState === WebSocket.OPEN || mpState.ws.readyState === WebSocket.CONNECTING)) {
+        return;
+      }
+
+      const wsUrl = getMultiplayerWebSocketUrl();
       let ws;
       try {
         ws = new WebSocket(wsUrl);
       } catch (_err) {
-        setTimeout(connectMultiplayerWebSocket, 2500);
+        mpState.connected = false;
+        updateMpTopPillAndRoster();
+        scheduleWsReconnect();
         return;
       }
       mpState.ws = ws;
 
       ws.addEventListener('open', () => {
         mpState.connected = true;
+        wsReconnectAttempts = 0;
         joinMultiplayerRoom(mpState.roomCode);
+        updateMpTopPillAndRoster();
       });
 
       ws.addEventListener('message', (ev) => {
@@ -13085,7 +13182,12 @@ function updateCharacterAnimationSystem(racer, idx, dt, rawDt, elapsed) {
       ws.addEventListener('close', () => {
         mpState.connected = false;
         updateMpTopPillAndRoster();
-        setTimeout(connectMultiplayerWebSocket, 2000);
+        scheduleWsReconnect();
+      });
+
+      ws.addEventListener('error', () => {
+        mpState.connected = false;
+        updateMpTopPillAndRoster();
       });
     }
 
@@ -13217,6 +13319,11 @@ function updateCharacterAnimationSystem(racer, idx, dt, rawDt, elapsed) {
         const inviteUrl = new URL(window.location.href);
         inviteUrl.searchParams.delete('room');
         inviteUrl.searchParams.set('invite', mpState.roomCode);
+        const customWs = getMultiplayerWebSocketUrl();
+        const defaultHostWs = `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}`;
+        if (customWs && customWs !== defaultHostWs) {
+          inviteUrl.searchParams.set('ws', customWs);
+        }
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(inviteUrl.toString()).catch(() => {});
         }
@@ -13268,6 +13375,40 @@ function updateCharacterAnimationSystem(racer, idx, dt, rawDt, elapsed) {
         selectPilot(idx);
       });
     });
+
+    // Configuração de Servidor WebSocket Customizado (Vercel / Nuvem)
+    if (mpCustomServerInputEl) {
+      try {
+        const stored = localStorage.getItem('cozy_plow_custom_ws');
+        if (stored) mpCustomServerInputEl.value = stored;
+      } catch (_e) {}
+    }
+    if (mpToggleServerBtnEl && mpServerConfigPanelEl) {
+      mpToggleServerBtnEl.addEventListener('click', () => {
+        const isHidden = mpServerConfigPanelEl.style.display === 'none';
+        mpServerConfigPanelEl.style.display = isHidden ? 'block' : 'none';
+        mpToggleServerBtnEl.textContent = isHidden ? 'Ocultar ▲' : 'Opções ⚙️';
+      });
+    }
+    if (mpSaveServerBtnEl && mpCustomServerInputEl) {
+      mpSaveServerBtnEl.addEventListener('click', () => {
+        const val = (mpCustomServerInputEl.value || '').trim();
+        if (val) {
+          localStorage.setItem('cozy_plow_custom_ws', val);
+        } else {
+          localStorage.removeItem('cozy_plow_custom_ws');
+        }
+        if (mpState.ws) {
+          try { mpState.ws.close(); } catch (_e) {}
+        }
+        wsReconnectAttempts = 0;
+        connectMultiplayerWebSocket();
+        mpSaveServerBtnEl.textContent = '✓ Conectando...';
+        setTimeout(() => {
+          mpSaveServerBtnEl.textContent = 'Salvar & Conectar';
+        }, 1500);
+      });
+    }
 
     // Start Screen & Gameplay Mobile Bottom Sheets
     const selectTopStackEl = document.querySelector('#char-select-overlay .select-top-stack');
@@ -13410,6 +13551,11 @@ function updateCharacterAnimationSystem(racer, idx, dt, rawDt, elapsed) {
         const inviteUrl = new URL(window.location.href);
         inviteUrl.searchParams.delete('room');
         inviteUrl.searchParams.set('invite', mpState.roomCode);
+        const customWs = getMultiplayerWebSocketUrl();
+        const defaultHostWs = `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}`;
+        if (customWs && customWs !== defaultHostWs) {
+          inviteUrl.searchParams.set('ws', customWs);
+        }
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(inviteUrl.toString()).catch(() => {});
         }

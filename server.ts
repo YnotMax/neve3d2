@@ -554,7 +554,7 @@ async function startServer() {
 
   const PORT = Number(process.env.PORT) || 3000;
   server.listen(PORT, '0.0.0.0', () => {
-    console.log(`Cozy Plow Multiplayer Server listening on http://0.0.0.0:${PORT}`);
+    console.log(`Planeta Limpa-Neve 3D Multiplayer Server listening on http://0.0.0.0:${PORT}`);
   });
 }
 
